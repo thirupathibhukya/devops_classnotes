@@ -1,0 +1,135 @@
+Creating MySQL DB using AWS RDS 
++++++++++++++++++++++++++++++++++
+
+-> Login into AWS account
+
+-> Go to RDS Service
+
+-> Choose 'Create Database' option
+
+-> Select 'Standard Creation' 
+
+-> Select 'Engine Type' as MySQL
+
+-> Select Template as 'Free Tier'
+
+-> Give DB Instance Identifier name as 'ashokitdb'
+
+Note : Default username is 'admin'
+
+-> Enter Passwrod and enter same as Confirm Password
+
+Note: Notedown username and password to connect with database
+
+-> Select 'Public Access' as Yes
+
+-> Under 'Additional COnfiguration', enter database name as 'ashokitdb'
+
+-> Click on 'Create Database'  (It will take few minutes to launch our database)
+
+
+Note : Once DB launched it will generate Endpoint for our DB to connect.
+
+Note: DB Endpoint means the URL to connect with Database.
+
+
+To connect with Database we need below details
+==============================================
+1) DB Endpoint (DB URL)
+2) DB Port Number ( For Mysql Default 3306)
+3) DB Username (defaul admin)
+4) DB Password
+
+
+=> Using these details, we connect with DB to perform operations.
+
+
+Connecting with AWS RDS (MYSQL DB) using EC2 instance
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+-> Launch EC2 instance (Ubuntu OS)
+
+-> Connect to EC2 instance using putty
+
+-> Execute below commands in Putty
+
+$ sudo apt-get update
+
+$ sudo apt-get install mysql-client
+
+$ mysql -h <endpoint-url> -u <username> -p 
+
+Ex : $ mysql -h database-2.c84zwybpu8dz.ap-south-1.rds.amazonaws.com -u admin -P 3306-p 
+
+
+(When we execute above command, it will ask password then enter correct pwd and click enter)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Note: If you are not able to connect then check 3306 port is open or not in security group. If it is not open then enable 3306 port.
+
+( In Database -> Go to Connectivity & Security -> Select VPC Security Group -> Click on Security Group ID ->  Edit Inbound Rule -> Type as All TCP -> Add Port Range as 0-65535 -> Save Rules)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-> Once connected to database we can see list of databases available using below command
+
+$ show databases;
+
+-> Select Database to use
+
+$ use <databasename>;
+
+-> Display tables available in the database
+
+$ show tables;
+
+-> Once database is selected then we can create table, insert data & retrieve data using below command
+
+
+//SQL Query To Create Table
+
+CREATE TABLE Persons (
+    PersonID int,
+
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+
+//SQL Query To Insert Record Into Table
+
+insert into Persons values(101, 'IT', 'Ashok', 'Hyd', 'Hyd');
+
+//SQL Query To see table data
+
+
+select * from Persons;
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
