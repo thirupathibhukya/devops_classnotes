@@ -1,0 +1,51 @@
+efs:-
+_+++++++
+
+Before mounting u should install efs client
+
+1.  login ec2 instabnce and instll nfs client
+
+    sudo yum install amazon-efs-utils
+
+2. create folder where you want to mount the efs
+
+   sudo mkdir efsdir
+
+3. efs mount with you have created dir 
+
+    sudo mount -t efs -o tls fs-08964ghhj4;/ efsdir
+
+4.  change dir to the mount point that is created above using the commond
+    cd efsdir
+5) create new sub dir 
+   sudo mkdir begin
+6.  change the permission of the above sbdir with following commond 
+    sudo chown ec2-user begin
+
+  cd begin
+   touch myfile,txt
+7.  ls
+
+8. stop ec2 instance 
+
+u create another ec2 instance and mount file then u can check file is shared oi=or not it will be shared
+
+1. login ec2 instance connect git bash
+
+2. install efs client software
+
+  sudo yum install amazon-efs-utils
+
+3. create dir and navigate dir
+
+  mkdir efsdir
+
+4. efs mount  with dir  
+
+    sudo mount -t efs -o tls fs-08964ghhj4;/ efsdir
+
+s. cd efsdir
+6.
+  can u check what you created file another instance can we shard or not
+ ls
+
